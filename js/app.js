@@ -13,19 +13,35 @@ Counter to keep track of the number of times an image is displayed in a round
 Constructor function to create the object for each item
 
 
-
 */
 
+// ==================================
+// Global Variables
+// ==================================
 
 
-// Global variables
+var likeCounter = 0;
+var itemDisplayCounter = 0;
+var allItems = [];
+var leftImage = document.getElementById('leftItemImg');
+var centerImage = document.getElementById();
+var rightImage = document.getElementById();
+var leftItemThatIsOnThePage;  
+
 
 
 // ==================================
 // Constructors
 // ==================================
 
+var MallItem = function(url, name){
+  this.imageUrl = url;
+  this.itemName = name;
+  this.clicks = 0;
+  this.displayCounter = 0;
 
+  allItems.push(this);
+};
 
 
 
@@ -35,8 +51,24 @@ Constructor function to create the object for each item
 // Initialize the page
 // ==================================
 
+var leftItemDiv = document.getElementById('leftItem');
 
 
 
 
+// ==================================
+// Instansiate the objects
+// ================================== 
+
+new MallItem('./img/bag.jpg','bag');
+new MallItem('./img/banana.jpg','banana');
+new MallItem('./img/bathroom.jpg','bathroom');
+new MallItem('./img/boots.jpg','boots')
+new MallItem('./img/breakfast.jpg','breakfast');
+
+
+
+// ==================================
+// Display the results
+// ==================================
 
