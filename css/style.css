@@ -3,6 +3,11 @@ body {
   background-color: rgb(103, 147, 185);
 }
 
+section {
+  border-color: blue;
+  
+}
+
 div {
   float: left;
   margin: 10px;
