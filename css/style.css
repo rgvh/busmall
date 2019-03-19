@@ -1,0 +1,19 @@
+
+body {
+  background-color: rgb(103, 147, 185);
+}
+
+div {
+  float: left;
+  margin: 10px;
+}
+
+img {
+  max-height: 200px;
+  max-width: 100%;
+  margin: auto;
+}
+
+h2 {
+
+}
