@@ -24,11 +24,16 @@ var itemDisplayCounter = 0;
 var allItems = [];
 var imageOnPage =[];
 var leftItemImg = document.getElementById('leftItemImg');
-// var centerItemImg = document.getElementById('centerItemImg');
-// var rightItemImg = document.getElementById('rightItemImg');
+var leftItemH2 = document.getElementById('leftItemDesc');
+var centerItemImg = document.getElementById('centerItemImg');
+var centerItemImg = document.getElementById('centerItemDesc');
+var rightItemImg = document.getElementById('rightItemImg');
+var rightItemImg = document.getElementById('rightItemDesc');  
 var leftItemThatIsOnThePage;
+var centerItemThatIsOnThePage;
+var rightItemThatIsOnThePage;
 
-imgOnPage.push(leftItemImg);
+// imgOnPage.push(leftItemImg);
 
 
 
@@ -59,7 +64,7 @@ console.log(allItems);
 // Store the index of the items put on the page
 // 
 
-var leftItemImg = document.getElementById('leftItemImg');
+// var leftItemImg = document.getElementById('leftItemImg');
 // var centerItemImg = document.getElementById('centerItemImg');
 // var rightItemImg = document.getElementById('rightItemImg');
 
@@ -74,6 +79,8 @@ function handleClickOnLeftItem(event){
   var leftItemIndex = Math.floor(Math.random() * allItems.length);
   leftItemThatIsOnThePage = allItems[leftItemIndex];
   leftItemImg.src = leftItemThatIsOnThePage.imageUrl;
+  // Change h2 to match image
+  leftItemH2.textContent = leftItemThatIsOnThePage.itemName;
   if(likeCounter > 5){
     leftItemImg.removeEventListener('click', handleClickOnLeftItem);
   }
@@ -85,11 +92,10 @@ leftItemImg.addEventListener('click', handleClickOnLeftItem);
 // Set up temp variable to store newly selected picures
 var tempLeft;
 var tempCenter; 
-var temRight;
+var tempRight;
 
 for (var i = 0; i < imageOnPage.length; i++){
 
-	
 }
 
 
@@ -128,3 +134,41 @@ leftItemThatIsOnThePage = allItems[0];
 // Display the results
 // ==================================
 
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [7, 5, 3, 5, 12, 3],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});

@@ -20,5 +20,11 @@ img {
 }
 
 h2 {
+  color: rgb(20, 65, 80)
+}
 
+canvas {
+  height: 150px;
+  width: 150px;
+   
 }
