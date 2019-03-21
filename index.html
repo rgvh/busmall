@@ -5,25 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/style.css">
 
 </head>
 <body>
-  <h1>Which item would you most likely purchase?</h1>
+  <section id="sampleProducts">
+  <h1>Which of these items would you most likely purchase?</h1>
   <div id="leftItem">
-    <img id="leftItemImg" src="imageUrl" alt="itemName">
+    <img id="leftItemImg" src="img/bag.jpg" alt="itemName">
     <h2 id="leftItemDesc">bag</h2>
   </div>
-  <div id="rightItem">
-    <img id="centerItemImg" src="img/bag.jpg" alt="bag">
+  <div id="centerItem">
+    <img id="centerItemImg" src="img/bag.jpg" alt="itemName">
     <h2 id="centerItemDesc">bag</h2>
   </div>
     <div id="rightItem">
-    <img id="rightItemImg" src="img/bag.jpg" alt="bag">
+    <img id="rightItemImg" src="img/bag.jpg" alt="itemName">
     <h2 id="rightItemDesc">bag</h2>
     </div>
+  </section>
+
+  <canvas id="myChart" width="300" height="300"></canvas>
+
   
-  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
   <script src="./js/app.js" type="text/javascript"></script>
 
 </body>

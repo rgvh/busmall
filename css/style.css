@@ -1,19 +1,38 @@
 
 body {
-  background-color: rgb(103, 147, 185);
+  background-color: #eeeeee;
+  box-sizing: border-box;
 }
 
+section {
+  border-color: blue;
+  
+}
+
+h1 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 36px;
+}
 div {
   float: left;
   margin: 10px;
+  padding: 20px;
 }
 
 img {
-  max-height: 200px;
+  max-height: 140px;
   max-width: 100%;
   margin: auto;
 }
 
 h2 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 24px;
+  color: rgb(20, 65, 80)
+}
 
+canvas {
+  height: 150px;
+  width: 150px;
+   
 }
