@@ -65,26 +65,34 @@ console.log(allItems);
 // Instansiate the objects
 // ==================================
 
-new MallItem('img/bag.jpg','bag');
-new MallItem('img/banana.jpg','banana');
-new MallItem('img/bathroom.jpg','bathroom');
-new MallItem('img/boots.jpg','boots');
-new MallItem('img/breakfast.jpg','breakfast');
-new MallItem('img/bubblegum.jpg', 'bubblegum');
-new MallItem('./img/chair.jpg', 'chair');
-new MallItem('./img/cthulhu.jpg', 'cthulhu');
-new MallItem('./img/dog-duck.jpg', 'dog-duck');
-new MallItem('./img/dragon.jpg', 'dragon');
-new MallItem('./img/pen.jpg', 'pen');
-new MallItem('./img/pet-sweep.jpg', 'pet-sweep');
-new MallItem('./img/scissors.jpg', 'scissors');
-new MallItem('./img/shark.jpg', 'shark');
-new MallItem('./img/sweep.png', 'sweep');
-new MallItem('./img/tauntaun.jpg', 'tauntaun');
-new MallItem('./img/unicorn.jpg', 'unicorn');
-new MallItem('./img/usb.gif', 'usb');
-new MallItem('./img/water-can.jpg', 'water-can');
-new MallItem('./img/wine-glass.jpg', 'wine-glass');
+// If there are no items in local storage, instantiate
+if(localStorage.getItem('allItems') === null){
+  console.log('making new items');
+  new MallItem('img/bag.jpg','bag');
+  new MallItem('img/banana.jpg','banana');
+  new MallItem('img/bathroom.jpg','bathroom');
+  new MallItem('img/boots.jpg','boots');
+  new MallItem('img/breakfast.jpg','breakfast');
+  new MallItem('img/bubblegum.jpg', 'bubblegum');
+  new MallItem('img/chair.jpg', 'chair');
+  new MallItem('img/cthulhu.jpg', 'cthulhu');
+  new MallItem('img/dog-duck.jpg', 'dog-duck');
+  new MallItem('img/dragon.jpg', 'dragon');
+  new MallItem('img/pen.jpg', 'pen');
+  new MallItem('img/pet-sweep.jpg', 'pet-sweep');
+  new MallItem('img/scissors.jpg', 'scissors');
+  new MallItem('img/shark.jpg', 'shark');
+  new MallItem('img/sweep.png', 'sweep');
+  new MallItem('img/tauntaun.jpg', 'tauntaun');
+  new MallItem('img/unicorn.jpg', 'unicorn');
+  new MallItem('img/usb.gif', 'usb');
+  new MallItem('img/water-can.jpg', 'water-can');
+  new MallItem('img/wine-glass.jpg', 'wine-glass');
+} else {
+  console.log('retrieving items from local storage');
+  var stringyItems = localStorage.getItem('allItems');
+  allItems = JSON.parse(stringyItems);
+}
 
 // console.log(leftItemThatIsOnThePage);
 // leftItemThatIsOnThePage = allItems[0];
@@ -100,9 +108,10 @@ new MallItem('./img/wine-glass.jpg', 'wine-glass');
 // limit number of times images can be clicked
 // TODO Prevent duplicate images
 // TODO Select all new images for next click
-// TODO Store results
-// TODO Display results in a chart
-// TODO Persist results in local storage
+// DONE Track image appearances and clicks
+// TODO Display results in a list with rows like "3 votes for the Banana Slicer" 
+// DONE Display results in a chart
+// DONE Persist results in local storage
 
 function pickImageAndIncrementAppeared() {
   var leftItemIndex = Math.floor(Math.random() * allItems.length);
@@ -176,6 +185,11 @@ function handleClickOnImage (clickEvent){
     imageSection.removeEventListener('click', handleClickOnImage);
     // console.log('clicked on item');
     buildMyChart();
+
+    // Save the market survey data in local storage
+    console.log('saving marketing survey data to local storage');
+    var stringyItems = JSON.stringify(allItems);
+    localStorage.setItem('allItems', stringyItems);
   }
 }
 
@@ -183,7 +197,9 @@ function handleClickOnImage (clickEvent){
 
 // ===================================
 // Display the results
-// ==================================
+// ===================================
+
+// TODO Fix color vs greyscale bars on chart
 
 function buildMyChart(){
 
