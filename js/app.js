@@ -21,6 +21,8 @@ Display 3 randomly selected images for user to select the one they would most li
 
 var totalClicks = 0;
 var allItems = [];
+
+// TODO Create global variable to establish initial state of item appearances
 // var imageOnPage =[];
 // var leftItemThatIsOnThePage;
 // var centerItemThatIsOnThePage;
@@ -47,7 +49,7 @@ var imageSection = document.getElementById('sampleProducts');
 // Constructors
 // ==================================
 
-// Creates BusMall object and pushes it to the allItems array
+// DONE Create BusMall object and pushes it to the allItems array
 
 function MallItem(url, name){
   this.imageUrl = url;
@@ -64,6 +66,8 @@ console.log(allItems);
 // ==================================
 // Instansiate the objects
 // ==================================
+
+// TODO Resize images so they appear uniformilly
 
 // If there are no items in local storage, instantiate
 if(localStorage.getItem('allItems') === null){
@@ -109,6 +113,7 @@ if(localStorage.getItem('allItems') === null){
 // TODO Prevent duplicate images
 // TODO Select all new images for next click
 // DONE Track image appearances and clicks
+// TODO Clear last group of three product images from the screen when the survey is completed
 // TODO Display results in a list with rows like "3 votes for the Banana Slicer" 
 // DONE Display results in a chart
 // DONE Persist results in local storage
@@ -133,23 +138,6 @@ function pickImageAndIncrementAppeared() {
   rightItemImg.src = allItems[rightItemIndex].imageUrl;
   rightItemH2.textContent = allItems[rightItemIndex].itemName;
 }
-
-
-// refactoring for event delegation
-// function handleClickOnLeftItem(event){
-//   console.log('clicked on left item');
-//   likeCounter++;
-//   leftItemThatIsOnThePage.clicks++;
-//   leftItemThatIsOnThePage = allItems[leftItemIndex];
-//   leftItemImg.src = leftItemThatIsOnThePage.imageUrl;
-//   // Change h2 to match image
-//   leftItemH2.textContent = leftItemThatIsOnThePage.itemName;
-//   if(likeCounter > 5){
-//     leftItemImg.removeEventListener('click', handleClickOnLeftItem);
-//   }
-// }
-
-// leftItemImg.addEventListener('click', handleClickOnLeftItem);
 
 
 // Set up temp variable to store newly selected picures
@@ -186,6 +174,7 @@ function handleClickOnImage (clickEvent){
     // console.log('clicked on item');
     buildMyChart();
 
+    // DONE Save marketing survey results to local storage
     // Save the market survey data in local storage
     console.log('saving marketing survey data to local storage');
     var stringyItems = JSON.stringify(allItems);
@@ -199,7 +188,8 @@ function handleClickOnImage (clickEvent){
 // Display the results
 // ===================================
 
-// TODO Fix color vs greyscale bars on chart
+// DONE Fix color vs greyscale bars on chart
+// TODO Apply more CSS to improve survey and survey results
 
 function buildMyChart(){
 
@@ -218,7 +208,7 @@ function buildMyChart(){
     data: {
       labels: labels,
       datasets: [{
-        label: '% of Clicks',
+        label: '% of Times Item Was Clicked When It Appeared',
         data: data,
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
@@ -226,7 +216,23 @@ function buildMyChart(){
           'rgba(255, 206, 86, 0.2)',
           'rgba(75, 192, 192, 0.2)',
           'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)'
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)'
+
+
           
         ],
         borderColor: [
@@ -235,7 +241,23 @@ function buildMyChart(){
           'rgba(255, 206, 86, 1)',
           'rgba(75, 192, 192, 1)',
           'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
+          'rgba(255, 159, 64, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)'
+
+
         ],
         borderWidth: 1
       }]
